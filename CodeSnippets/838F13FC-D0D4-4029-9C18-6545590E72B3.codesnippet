@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addListData</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - loadData
+- (void)loadData:(NSInteger)page {
+    @weakify(self);
+    [PictureModel getPictureTypeListListWithTypeId:_cellType uid:GetDataUserInfo.userId page:page success:^(StatusModel *response) {
+        @strongify(self);
+        [self loadDataFinish:response page:page];
+
+    }];
+}
+
+- (void)loadDataFinish:(StatusModel *)response page:(NSInteger)page {
+    if (response.status == 1) {
+        FollowListModel *model = [FollowListModel mj_objectWithKeyValues:response.data];
+        //接收或者添加数据
+        if (page &lt;= 1) {
+            _page = 1;
+            _dataArray = [NSMutableArray arrayWithArray:model.followList];
+        } else {
+            [_dataArray addObjectsFromArray:model.followList];
+        }
+        //接口请求完成加载UI
+        if (!_tableView) {
+            [self setUI];
+        }
+        //判断是否隐藏上拉加载更多
+        if (page &lt; model.totalPage) {
+            _tableView.footer.hidden = NO;
+        } else {
+            _tableView.footer.hidden = YES;
+        }
+        
+        //加载数据成功
+        [self loadingSuccess];
+        if (model.totalPage == 0) {
+            [self loadingBlank];
+        }
+    } else if (_dataArray.count &gt; 0 &amp;&amp; response.status != 1){
+        [iToast alertWithTitle:response.msg];
+    } else {
+        [iToast alertWithTitle:response.msg];
+        [self loadingFail];
+    }
+    [_tableView reloadData];
+    [_tableView.header endRefreshing];
+    [_tableView.footer endRefreshing];
+}
+
+//数据加载更多
+- (void)loadMoreData {
+    _page += 1;
+    [self loadData:_page];
+}
+
+//加载失败后点击刷新重新加载
+- (void)refreshClickWithStatus:(LoadingStatus)status {
+    [self loadData:_page];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>838F13FC-D0D4-4029-9C18-6545590E72B3</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>addListData</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
