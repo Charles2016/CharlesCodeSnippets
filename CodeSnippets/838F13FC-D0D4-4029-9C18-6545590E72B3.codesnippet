@@ -12,66 +12,61 @@
 	<string>#pragma mark - loadData
 - (void)loadData:(NSInteger)page {
     @weakify(self);
-    [PictureModel getPictureTypeListListWithTypeId:_cellType uid:GetDataUserInfo.userId page:page success:^(StatusModel *response) {
+    [AddressListModel getAddressListWithPage:page networkHUD:NetworkHUDMsg target:self success:^(StatusModel *response) {
         @strongify(self);
+        [self initView];
         [self loadDataFinish:response page:page];
-
     }];
 }
 
 - (void)loadDataFinish:(StatusModel *)response page:(NSInteger)page {
-    if (response.status == 1) {
-        FollowListModel *model = [FollowListModel mj_objectWithKeyValues:response.data];
-        //接收或者添加数据
+    if (response.code == 0) {
+        &lt;#Model#&gt; *model = (&lt;#Model#&gt; *)response.data;
+        // 接收或者添加数据
         if (page &lt;= 1) {
-            _page = 1;
-            _dataArray = [NSMutableArray arrayWithArray:model.followList];
+            _dataArray = [NSMutableArray arrayWithArray:model.list];
         } else {
-            [_dataArray addObjectsFromArray:model.followList];
+            [_dataArray addObjectsFromArray:model.list];
         }
-        //接口请求完成加载UI
-        if (!_tableView) {
-            [self setUI];
-        }
-        //判断是否隐藏上拉加载更多
-        if (page &lt; model.totalPage) {
-            _tableView.footer.hidden = NO;
+        // 判断是否隐藏上拉加载更多
+        if (1 == model.more &amp;&amp; _dataArray.count) {
+            &lt;#table#&gt;.footer.hidden = NO;
         } else {
-            _tableView.footer.hidden = YES;
+            &lt;#table#&gt;.footer.hidden = YES;
         }
         
         //加载数据成功
-        [self loadingSuccess];
-        if (model.totalPage == 0) {
-            [self loadingBlank];
+        [self loadingDataSuccess];
+        if (model.total == 0) {
+            //            [self loadingDataBlank];
         }
-    } else if (_dataArray.count &gt; 0 &amp;&amp; response.status != 1){
-        [iToast alertWithTitle:response.msg];
+    } else if (_dataArray.count &gt; 0 &amp;&amp; response.code != 1){
+        //        [iToast alertWithTitle:data.msg];
     } else {
-        [iToast alertWithTitle:response.msg];
-        [self loadingFail];
+        //        [iToast alertWithTitle:data.msg];
+        //        [self loadingDataFail];
     }
-    [_tableView reloadData];
-    [_tableView.header endRefreshing];
-    [_tableView.footer endRefreshing];
+    [&lt;#table#&gt; reloadData];
+    [&lt;#table#&gt;.header endRefreshing];
+    [&lt;#table#&gt;.footer endRefreshing];
 }
 
-//数据加载更多
-- (void)loadMoreData {
-    _page += 1;
+// 加载失败后点击刷新重新加载
+-(void)reflashClick {
     [self loadData:_page];
 }
 
-//加载失败后点击刷新重新加载
-- (void)refreshClickWithStatus:(LoadingStatus)status {
+// 数据加载更多
+- (void)loadMoreData {
+    _page += 1;
     [self loadData:_page];
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>838F13FC-D0D4-4029-9C18-6545590E72B3</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>addListData</string>
 	<key>IDECodeSnippetTitle</key>
 	<string>addListData</string>
 	<key>IDECodeSnippetUserSnippet</key>

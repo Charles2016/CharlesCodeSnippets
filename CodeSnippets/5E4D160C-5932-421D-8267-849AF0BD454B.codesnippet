@@ -3,35 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addSetUI</string>
+	<string>addPushVC</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>All</string>
+		<string>CodeBlock</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"xxxx";
-    
-    [self loadData];
-    [self setUI];
-}
-
-- (void)setUI {
-    
-}
-
-- (void)loadData {
-    
-}</string>
+	<string>&lt;#ViewController#&gt; *VC = [[&lt;#ViewController#&gt; alloc]init];
+        [self.navigationController pushViewController:VC animated:YES];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>73A00C24-747F-4601-93B1-D7CF58ED70F8</string>
+	<string>5E4D160C-5932-421D-8267-849AF0BD454B</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>addSetUI</string>
+	<string>addPushVC</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addSetUI</string>
+	<string>addPushVC</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

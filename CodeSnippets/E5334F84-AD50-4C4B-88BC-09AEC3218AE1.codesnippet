@@ -3,35 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addSetUI</string>
+	<string>sAddAction</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"xxxx";
-    
-    [self loadData];
-    [self setUI];
-}
-
-- (void)setUI {
-    
-}
-
-- (void)loadData {
-    
-}</string>
+	<string>// MARK: 事件处理模块
+    @objc func buttonAction(button: UIButton) {
+        
+    }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>73A00C24-747F-4601-93B1-D7CF58ED70F8</string>
+	<string>E5334F84-AD50-4C4B-88BC-09AEC3218AE1</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>addSetUI</string>
+	<string>sAddAction</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addSetUI</string>
+	<string>sAddAction</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

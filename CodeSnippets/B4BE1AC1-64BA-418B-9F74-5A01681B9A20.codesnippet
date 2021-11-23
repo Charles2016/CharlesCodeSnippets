@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sAddTableView</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class PayVC: SuperVC {
+    
+    var tableView: UITableView!
+    var dataArray: NSMutableArray!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "支付"
+        self.navigationItem.rightBarButtonItem = self.setItemButton("chat_more", "", "itemAction", true)
+        
+        dataArray = ["零钱", "回音币", "银行卡"]
+        setUI()
+    }
+    
+    func setUI() {
+        tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = kColorNavBgFrist
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.setFootView()
+        tableView.separatorInset = .init(top: 0, left: 20, bottom: 0, right: 20)
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints({ (make) in
+            make.edges.equalTo(self.view)
+        })
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+extension PayVC: UITableViewDataSource,  UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return dataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -&gt; CGFloat {
+        return 56
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        var cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "cellId")
+        if (cell == nil) {
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: "cellId");
+        }
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = UIColorHex(0xdbdbdb)
+        cell.textLabel?.font = kFont15
+        cell.textLabel?.textAlignment = .left
+        cell.textLabel?.text = (dataArray[indexPath.row] as! String)
+        
+        let arrow = UIImageView(image: kImageName("arrow_icon"))
+        arrow.frame = CGRect.init(x: 0, y: 0, width: 12 * W_Unit, height: 12 * W_Unit)
+        arrow.contentMode = .scaleAspectFill
+        cell.accessoryView = arrow
+        
+        return cell
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B4BE1AC1-64BA-418B-9F74-5A01681B9A20</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>sAddTableView</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>sAddTableView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

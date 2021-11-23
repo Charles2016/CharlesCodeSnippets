@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addButton</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+button.tag = 20202203;
+button.titleLabel.font = [UIFont systemFontOfSize:13];
+[button setTitle:@"" forState:UIControlStateNormal];
+[button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+[button setTitleColor:UIColor.whiteColor forState:UIControlStateSelected];
+[button setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+[button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+[self.view addSubview:button];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>287A6E13-2EF0-4726-AB11-6A96818CC6F1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>addButton</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>addButton</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

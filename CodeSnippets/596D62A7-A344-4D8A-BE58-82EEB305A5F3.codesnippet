@@ -9,41 +9,52 @@
 		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>@interface CommentListVC ()&lt;UITableViewDelegate, UITableViewDataSource&gt; {
+	<string>@interface MessageSetVC () &lt;UITableViewDelegate, UITableViewDataSource&gt; {
     UITableView *_tableView;
-    NSMutableArray *_dataArray;
+    NSArray *_dataArray;
 }
 
 @end
 
-@implementation CommentListVC
+@implementation MessageSetVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"消息设置";
     
     [self loadData];
     [self setUI];
 }
 
 - (void)setUI {
-    _tableView = InsertTableView(self.view, CGRectMake(0, 0, kScreenWidth, kBodyHeight), self, self, UITableViewStylePlain, UITableViewCellSeparatorStyleSingleLine);
+    _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.tableFooterView = [UIView new];
+    _tableView.separatorColor = kColorSLine;
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    [self.view addSubview:_tableView];
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(0);
+        make.width.mas_equalTo(kScreenWidth);
+        make.height.mas_equalTo(kBodyHeight);
+    }];
 }
 
 - (void)loadData {
-    _dataArray = [NSMutableArray arrayWithCapacity:0];
-    for (int j = 0; j &lt; 2; j++) {
-        NSMutableArray *temp = [NSMutableArray arrayWithCapacity:0];
-        for (int i = 0; i &lt; 5; i++) {
-            
-        }
-        [_dataArray addObject:temp];
-    }
+    //0为图片资源，1为视频资源 2为纯文字
+    _dataArray = @[@[@"消息提醒", @"关闭后，消息将不再提醒", @"所有人"], @[@"评论回复的消息提醒", @"接受谁的评论消息提醒", @"所有人"],
+    @[@"收到的赞提醒", @"是否接受点赞通知提醒", @"始终提醒"],
+    @[@"打招呼消息提醒", @"是否接打招呼消息提醒", @"所有人"]];
+    
     
 }
 
 #pragma mark - UITableViewDataSource &amp;&amp; UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _dataArray.count;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -51,39 +62,24 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 78 * W_Unit + 20;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MessageSetCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MessageSetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setCellWithData:_dataArray[indexPath.row]];
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 1 &amp;&amp; _dataArray.count) {
-        static NSString *identifier = @"sectionHeader";
-        UIView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
-        return headerView;
-    }
-    return nil;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 45;
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>596D62A7-A344-4D8A-BE58-82EEB305A5F3</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
 	<string>addTableViewVC</string>
 	<key>IDECodeSnippetUserSnippet</key>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addColleciontVC</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>@interface ChatSearchSourceVC () &lt;UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout&gt; {
+    UICollectionView *_collectionView;
+    NSArray *_dataArray;
+}
+
+@end
+
+@implementation ChatSearchSourceVC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.title = @"视频图片";
+    
+    [self loadData];
+    [self setUI];
+}
+
+- (void)setUI {
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    CGFloat itemW = (kScreenWidth - 40 - 3 * 8) / 4;
+    layout.itemSize = CGSizeMake(itemW, itemW);
+    layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    layout.minimumLineSpacing = 8;
+    layout.minimumInteritemSpacing = 8;    
+    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    _collectionView.showsVerticalScrollIndicator = NO;
+    [_collectionView registerClass:[ChatSearchSourceCell class] forCellWithReuseIdentifier:@"itemId"];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    _collectionView.backgroundColor = kColorWhite;
+    [self.view addSubview:_collectionView];
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 50 + kBottomSaveHeight, 0));
+    }];
+}
+
+- (void)loadData {
+   
+}
+
+#pragma mark - UICollectionViewDelegate &amp;&amp; UICollectionViewDataSource
+// 点击item
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+}
+
+//返回分区个数
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return _dataArray.count;
+}
+
+//返回每个分区的item个数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSArray *temp = _dataArray[section][1];
+    return temp.count;
+}
+
+//返回每个item
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ChatSearchSourceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"itemId" forIndexPath:indexPath];
+    NSArray *temp = _dataArray[indexPath.section][1];
+    [cell setCellWithData:temp[indexPath.row]];
+    return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+        header.backgroundColor = kColorSBg;
+        UILabel *title = [[UILabel alloc]init];
+        title.textColor = kColorBlack;
+        title.font = kFontSize13;
+        title.text = _dataArray[indexPath.section][0];
+        [header addSubview:title];
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(header).offset(20);
+            make.centerY.equalTo(header);
+            make.height.mas_equalTo(44 * H_Unit);
+            make.width.equalTo(header).offset(150);
+        }];
+        return header;
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(kScreenWidth, 30);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat itemW = (kScreenWidth - 40 - 3 * 8) / 4;
+    return CGSizeMake(itemW, itemW);
+}
+
+//边距设置:整体边距的优先级，始终高于内部边距的优先级
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+ layout:(UICollectionViewLayout *)collectionViewLayout
+insetForSectionAtIndex:(NSInteger)section {
+   return UIEdgeInsetsMake(10, 20, 10, 20);
+}
+
+//列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+        return 8;
+}
+
+//行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 8;
+}
+
+
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9E1AB13A-4BFB-44F5-AFC5-0B43F4FA043D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>addColleciontVC</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>addColleciontVC</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -3,35 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addSetUI</string>
+	<string>sAddTextFieldDelegate</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"xxxx";
-    
-    [self loadData];
-    [self setUI];
-}
-
-- (void)setUI {
-    
-}
-
-- (void)loadData {
-    
+	<string>extension UserInfoVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -&gt; Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>73A00C24-747F-4601-93B1-D7CF58ED70F8</string>
+	<string>CD3A7C31-F1CC-4B7F-ABC7-E1B6B97BE56E</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Objective-C</string>
-	<key>IDECodeSnippetSummary</key>
-	<string>addSetUI</string>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addSetUI</string>
+	<string>sAddTextFieldDelegate</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

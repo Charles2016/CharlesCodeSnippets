@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sAddLoadData</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// MARK: 数据加载模块
+    func loadData(_ currentPage: Int) {
+        HomeModel.getHomeListWithParams(currentPage) { [weak self] (response) in
+            self?.loadDataFinish(response, currentPage)
+        }
+    }
+    
+    func loadDataFinish(_ response: BaseModel, _ currentPage: Int) {
+        //接口请求完成加载UI
+        if tableView == nil {
+            self.setUI()
+        }
+        if response.status == 1 {
+            let model = Mapper&lt;HomeModel&gt;().map(JSONObject: response.data)
+            //接收或者添加数据
+            page = currentPage
+            if page &lt;= 1 {
+                dataArray.removeAllObjects()
+            }
+            dataArray.addObjects(from: (model?.productList)!)
+            //判断是否隐藏上拉加载更多
+            var fState: FooterRefresherState!
+            if page &gt;= (model?.totalPage)! {
+                //少于5条数据不显示底部没有更多
+                fState = .removed
+                if dataArray.count &gt; 5 {
+                    //超过5条数据显示没有更多
+                    fState = .noMoreData
+                }
+            } else {
+                fState = .normal
+            }
+            tableView.switchRefreshFooter(to: fState)
+            //加载数据成功
+            self.loadSuccess()
+            if model?.totalPage == 0 {
+                loadBlank()
+            }
+        } else if (dataArray.count &gt; 0 &amp;&amp; response.status != 1){
+            showMessgeText(response.msg)
+        } else {
+            showMessgeText(response.msg)
+            loadFail()
+        }
+        tableView.reloadData()
+        tableView.switchRefreshHeader(to: .normal(.none, 0.5))
+    }
+    
+    func loadMoreData() {
+        page += 1
+        loadData(page)
+    }
+    
+    override func refreshClickWithStatus() {
+        loadData(page)
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DE378D50-1521-4F82-8F3F-FCE7BACCC90C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>sAddLoadData</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>sAddLoadData</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

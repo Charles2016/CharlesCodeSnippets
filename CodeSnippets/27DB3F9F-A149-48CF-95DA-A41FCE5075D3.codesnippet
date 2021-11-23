@@ -10,6 +10,11 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>#pragma mark - UITableViewDataSource &amp;&amp; UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return &lt;#section#&gt;;
 }
@@ -31,11 +36,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     return &lt;#sectionView#&gt;;
@@ -43,25 +43,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return &lt;#sectionHeight#&gt;;
-}
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        DailyCheckinHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        @weakify(self);
-        headerView.monthBlock = ^(NSString *monthStr) {
-            @strongify(self);
-            [self reloadDataWithDateStr:monthStr];
-        };
-        return headerView;
-    }
-    return nil;
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>27DB3F9F-A149-48CF-95DA-A41FCE5075D3</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>addTableViewDelegate</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>tableViewDelegate</string>
+	<string>addTableViewDelegate</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

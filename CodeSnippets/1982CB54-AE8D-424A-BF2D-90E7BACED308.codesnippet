@@ -3,31 +3,39 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addViewMethod</string>
+	<string>addSetVC</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setUI];
+	<string>class EditTagVC: SuperVC {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "添加好友"
+        
+        self.setUI()
     }
-    return self;
-}
-
-- (void)setUI {
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setUI() {
+        
+    }
     
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>EF95D362-C290-4828-877B-6257C92B683E</string>
+	<string>1982CB54-AE8D-424A-BF2D-90E7BACED308</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>addViewMethod</string>
+	<string>addSetVC</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addViewMethod</string>
+	<string>addSetVC</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

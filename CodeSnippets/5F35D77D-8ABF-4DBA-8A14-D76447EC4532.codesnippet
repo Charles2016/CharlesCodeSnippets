@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sAddButton</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let button = UIButton.init(type: .custom)
+        button.tag = 1091200
+        button.setTitleColor(kColorBlack, for: .normal)
+        button.setImage(kImageName("icon_unchoose"), for: .normal)
+        button.setImage(kImageName("icon_choose"), for: .selected)
+        button.setTitle("获取验证码", for: .normal)
+        button.titleLabel?.font = kFont13
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        self.view.addSubview(button)
+        button.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view).offset(5.5)
+            make.left.equalTo(12)
+            make.size.equalTo(CGSize.init(width: 70, height: 30))
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5F35D77D-8ABF-4DBA-8A14-D76447EC4532</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>sAddButton</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>sAddButton</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

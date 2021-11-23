@@ -3,35 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addSetUI</string>
+	<string>addImageView</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"xxxx";
-    
-    [self loadData];
-    [self setUI];
-}
-
-- (void)setUI {
-    
-}
-
-- (void)loadData {
-    
+	<string>let imageView = UIImageView(image: kImageName("login_bg"))
+imageView.contentMode = .scaleAspectFill
+self.view.addSubview(imageView)
+imageView.snp.makeConstraints { (make) in
+    make.top.equalTo(self.view)
+    make.centerX.equalTo(self.view)
+    make.width.height.equalTo(kScreenWidth)
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>73A00C24-747F-4601-93B1-D7CF58ED70F8</string>
+	<string>BB828D14-FD66-4AB7-8278-6E9F5504A4CC</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>addSetUI</string>
+	<string>addImageView</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addSetUI</string>
+	<string>addImageView</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

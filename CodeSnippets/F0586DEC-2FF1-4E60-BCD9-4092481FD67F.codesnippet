@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sAddTextFeild</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let textField = UITextField()
+textField.tag = 1091210
+textField.placeholder = ""
+textField.setValue(kColorWhite, forKeyPath: "placeholderLabel.textColor")
+textField.textColor = kColorBlack
+textField.font = kFont16
+textField.delegate = self
+self.view.addSubview(textField)
+textField.snp.makeConstraints { (make) in
+    make.top.equalTo(47)
+    make.width.equalTo(76)
+    make.height.equalTo(47)
+    make.left.equalTo(10)
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F0586DEC-2FF1-4E60-BCD9-4092481FD67F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>sAddTextFeild</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>sAddTextFeild</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

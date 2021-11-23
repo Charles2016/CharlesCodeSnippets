@@ -3,35 +3,35 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addSetUI</string>
+	<string>sAddSetUI</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"xxxx";
-    
-    [self loadData];
-    [self setUI];
-}
+	<string>override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "地址编辑"
+        self.setUI()
+    }
 
-- (void)setUI {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-}
-
-- (void)loadData {
-    
-}</string>
+    // MARK: UI设置模块
+    func setUI() {
+        
+    }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>73A00C24-747F-4601-93B1-D7CF58ED70F8</string>
+	<string>F365E086-0568-444F-BC66-4CF577DFFFF5</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>addSetUI</string>
+	<string>sAddSetUI</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addSetUI</string>
+	<string>sAddSetUI</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

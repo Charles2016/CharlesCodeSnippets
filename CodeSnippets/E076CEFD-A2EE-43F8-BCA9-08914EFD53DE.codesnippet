@@ -3,35 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>addSetUI</string>
+	<string>addImageView</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>All</string>
+		<string>CodeBlock</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = @"xxxx";
-    
-    [self loadData];
-    [self setUI];
-}
-
-- (void)setUI {
-    
-}
-
-- (void)loadData {
-    
-}</string>
+	<string>UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+imageView.layer.cornerRadius = 5;
+imageView.layer.masksToBounds = YES;
+[self.view addSubview:imageView];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>73A00C24-747F-4601-93B1-D7CF58ED70F8</string>
+	<string>E076CEFD-A2EE-43F8-BCA9-08914EFD53DE</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>addSetUI</string>
+	<string>addImageView</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>addSetUI</string>
+	<string>addImageView</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addTextView</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>_textView = [[UITextView alloc]init];
+_textView.delegate = self;
+_textView.font = kFontSize15;
+_textView.tintColor = kColorMain;
+_textView.textColor = kColorMText;
+_textView.backgroundColor = kColorViewBg;
+[self.view addSubview:_textView];
+[_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.equalTo(self.view.mas_left).offset(20);
+    make.top.equalTo(self.view.mas_top).offset(30);
+    make.width.equalTo(self.view.mas_width).offset(-40);
+    make.height.mas_equalTo(150);
+}];
+//设置提示placeholder
+UILabel *placeHolder = [[UILabel alloc] init];
+placeHolder.text = @"这个人很神秘";
+placeHolder.numberOfLines = 0;
+placeHolder.textColor = kColorSText;
+[placeHolder sizeToFit];
+[_textView addSubview:placeHolder];
+placeHolder.font = _textView.font;
+[_textView setValue:placeHolder forKey:@"_placeholderLabel"];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>EAC12EE2-3219-4A09-8790-84665AFE11E9</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>addTextView</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>addTextView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
