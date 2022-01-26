@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addButtonImageInset</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag = 2021122710 + i;
+        button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        [button setTitle:i==0?@"3月份":@"年份" forState:UIControlStateNormal];
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [button setTitleColor:[UIColor colorWithHexString:@"#A8C4EC"] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor colorWithHexString:@"#2A97FF"] forState:UIControlStateDisabled];
+        [button setImage:[UIImage imageNamed:@"billing_arrow_down"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"billing_arrow_down_s"] forState:UIControlStateDisabled];
+        [button addTarget:self action:@selector(dateAction:) forControlEvents:UIControlEventTouchUpInside];
+        [dateView addSubview:button];
+        CGFloat inset = 5;
+        CGFloat buttonW = kScreenWidth/2;
+        CGFloat imageW = 10;
+        CGFloat titleW = [button.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:button.titleLabel.font,NSFontAttributeName, nil]].width+2;
+        CGFloat offset = (buttonW-titleW-imageW)/2;
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, offset, 0, 0)];
+        [button setImageEdgeInsets:UIEdgeInsetsMake(0, offset+titleW+imageW+inset, 0, 0)];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.height.equalTo(dateView);
+            make.left.equalTo(view).offset(i==0?0:kScreenWidth/2);
+            make.width.equalTo(dateView).multipliedBy(0.5);
+        }];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DAF75DC6-973D-43BD-BF2A-C8951679A91A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>addButtonImageInset</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>addButtonImageInset</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

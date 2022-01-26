@@ -11,27 +11,27 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>UITextField *textField = [[UITextField alloc]init];
-        textField.font = kFontSize15;
-        textField.textColor = kColorMText;
-        textField.backgroundColor = kColorSBg;
-        textField.tintColor = kColorMain;
-        textField.layer.cornerRadius = 5;
-        textField.layer.masksToBounds = YES;
-        textField.textAlignment = NSTextAlignmentLeft;
-        textField.leftViewMode = UITextFieldViewModeAlways;
-        textField.leftView = [UIView new];
-        textField.rightViewMode = UITextFieldViewModeAlways;
-        textField.rightView = [UIView new];
-        textField.returnKeyType = UIReturnKeyDone;
-        textField.attributedPlaceholder = [[NSMutableAttributedString alloc] initWithString:i == 0 ? @"请输入手机号" : @"请输入密码" attributes:@{NSFontAttributeName : textField.font, NSForegroundColorAttributeName : kColorSText}];
-        textField.delegate = self;
-        [bgView addSubview:textField];
-        [textField mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(20);
-            make.top.equalTo(tip.mas_bottom).offset(25 + i * (44 * H_Unit + 10));
-            make.width.equalTo(bgView).offset(-60);
-            make.height.mas_equalTo(44 * H_Unit);
-        }];</string>
+textField.font = [UIFont systemFontOfSize:13];
+textField.textColor = UIColor.blackColor;
+textField.backgroundColor = UIColor.whiteColor;
+textField.tintColor = UIColor.blueColor;
+textField.layer.cornerRadius = 5;
+textField.layer.masksToBounds = YES;
+textField.textAlignment = NSTextAlignmentLeft;
+textField.leftViewMode = UITextFieldViewModeAlways;
+textField.leftView = [UIView new];
+textField.rightViewMode = UITextFieldViewModeAlways;
+textField.rightView = [UIView new];
+textField.returnKeyType = UIReturnKeyDone;
+textField.attributedPlaceholder = [[NSMutableAttributedString alloc] initWithString:@"请输入" attributes:@{NSFontAttributeName : textField.font, NSForegroundColorAttributeName : kColorSText}];
+textField.delegate = self;
+[self addSubview:textField];
+[textField mas_updateConstraints:^(MASConstraintMaker *make) {
+    make.left.mas_equalTo(20);
+    make.top.mas_equalTo(60);
+    make.width.mas_equalTo(60);
+    make.height.mas_equalTo(44);
+}];</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>9BCCCA6E-747C-4646-9E41-B741C931EDF1</string>
 	<key>IDECodeSnippetLanguage</key>
